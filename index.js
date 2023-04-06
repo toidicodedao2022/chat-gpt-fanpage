@@ -9,7 +9,6 @@ app.get('/v1/chat-gpt', function (req, res) {
     response(req.query['message'],req.query['api-key']).then(message=>{
         res.json({
             "messages": [
-                {"text": `Câu hỏi của bạn là: ${req.query['message']}`},
                 {"text": message},
             ]
         })
