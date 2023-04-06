@@ -44,4 +44,4 @@ async function response(message,apiKey){
     }
 }
 
-app.listen(3002)
+app.listen(8080)
