@@ -23,12 +23,23 @@ async function response(message,apiKey){
         });
         const openai = new OpenAIApi(configuration);
 
-        const completion = await openai.createCompletion({
-            model: "text-davinci-003",
-            prompt: message,
-        });
-        return completion.data.choices[0].text;
+        const completion =await openai.createChatCompletion({
+            model:'gpt-3.5-turbo',
+            messages:[
+                {
+                    'role':'user',
+                    'content':message
+                }
+            ]
+        })
+        // console.log(completion.data.choices[0].content)
+        // const completion = await openai.createCompletion({
+        //     model: "gpt-3.5-turbo",
+        //     prompt: message,
+        // });
+        return completion.data.choices[0].message.content;
     }catch (e){
+        console.log(e)
         return "Tôi đang gặp sự cố!"
     }
 }
